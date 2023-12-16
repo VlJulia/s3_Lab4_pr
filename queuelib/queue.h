@@ -21,7 +21,7 @@ public:
         this->mas = new T[n];
     };
     TQueue(TQueue <T>& q) {
-        this->sise = q.sise;
+        this->size = q.size;
         this->start = q.start;
         this->end = q.end;
         this->count = q.count;
@@ -38,6 +38,7 @@ public:
 	T Pop();//с удалением из начала
 
     int GetStart() { return start; }
+    int GetSize() { return size; }
     int GetCount() { return count; }
     int GetEnd() { return end; }
 	bool IsFull() { return ((count>0)&&(end == start)); }
