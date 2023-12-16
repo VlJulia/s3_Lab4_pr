@@ -43,6 +43,8 @@ public:
     int GetEnd() { return end; }
 	bool IsFull() { return ((count>0)&&(end == start)); }
 	bool IsEmpty() {return (count == 0); }
+    bool operator==(const TQueue<T>& q) const;
+    bool operator!=(const TQueue<T>& q) const;
 
     //операторы вводы и выводы
 
@@ -83,5 +85,20 @@ T TQueue<T>::Pop() {
 	count--;
     return tmp;
 }
-
+template<class T>
+bool TQueue<T>::operator!=(const TQueue<T>& q) const {
+    if (this->size != q.size) return true;
+    for (int i = 0; i < this->size; i++) {
+        if (this->mas[i] != q.mas[i]) return true;
+    }
+    return false;
+};
+template<class T>
+bool TQueue<T>::operator==(const TQueue<T>& q) const {
+    if (this->size != q.size) return false;
+    for (int i = 0; i < this->size; i++) {
+        if (this->mas[i] != q.mas[i]) return false;
+    }
+    return true;
+};
 
